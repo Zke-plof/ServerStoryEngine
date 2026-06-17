@@ -1,0 +1,93 @@
+# Server Story Engine Configuration
+
+# Database settings (SQLite)
+database:
+  file: chronicle.db
+
+# Discord Integration
+discord:
+  enabled: false
+  # Bot token from https://discord.com/developers/applications
+  token: ""
+  # Channel ID where history is posted
+  channel-id: ""
+  # Post events to Discord in real-time
+  post-events: true
+  # Format: "embed" for rich embeds, "text" for plain text
+  format: embed
+  # Include timestamps in messages
+  timestamps: true
+  # Message prefix for text format
+  prefix: "[Chronicle]"
+
+# Narrative generation
+narrative:
+  # Language style: formal, casual, epic
+  style: epic
+  # Maximum events to show in chronicle
+  max-events-per-page: 10
+
+# Age system
+ages:
+  enabled: true
+  # How often to check for age transitions (in ticks, 20 ticks = 1 second)
+  check-interval: 6000
+  # Thresholds for age detection
+  thresholds:
+    # Population below this triggers Settlement age
+    settlement-population: 5
+    # Buildings above this triggers Expansion age
+    expansion-buildings: 50
+    # PvP kills per hour above this triggers Conflict age
+    conflict-pvp-rate: 10
+    # Total economy above this triggers Prosperity age
+    prosperity-economy: 1000000
+
+# Event tracking
+tracking:
+  # Track player kills
+  pvp-kills: true
+  # Track player deaths
+  player-deaths: true
+  # Track block placement
+  block-placement: true
+  # Track dragon kills
+  dragon-kills: true
+  # Track player joins/leaves
+  player-joins: true
+  # Track economy changes (requires Vault)
+  economy: true
+  # Track advancements
+  advancements: true
+
+# Historical landmarks
+landmarks:
+  enabled: true
+  # Maximum distance from event to place landmark (blocks)
+  max-distance: 10
+  # Material for landmark blocks
+  material: GOLD_BLOCK
+  # Show particles around landmarks
+  particles: true
+
+# NPC memory
+npc-memory:
+  enabled: true
+  # Maximum events an NPC can remember
+  max-memory: 50
+  # How often NPCs can mention events (in ticks)
+  mention-cooldown: 600
+
+# Books
+books:
+  enabled: true
+  # Maximum pages per book
+  max-pages: 15
+  # Auto-generate books on significant events
+  auto-generate: true
+
+# Admin GUI
+gui:
+  enabled: true
+  # Items per page in chronicle browser
+  items-per-page: 45

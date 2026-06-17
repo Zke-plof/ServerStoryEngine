@@ -1,0 +1,47 @@
+name: ServerStoryEngine
+version: '${project.version}'
+main: com.serverstoryengine.ServerStoryEngine
+api-version: '26.1'
+description: A living chronicle that turns player actions into server history
+author: ServerStoryEngine
+commands:
+  chronicle:
+    description: Browse the server chronicle
+    usage: /chronicle [page]
+    permission: storyengine.chronicle
+  chronicle-admin:
+    description: Admin commands for the chronicle
+    usage: /chronicle-admin <subcommand>
+    permission: storyengine.admin
+  landmark:
+    description: Manage historical landmarks
+    usage: /landmark <subcommand>
+    permission: storyengine.landmark
+  book:
+    description: Get a historical book
+    usage: /book [title]
+    permission: storyengine.book
+  age:
+    description: View the current server age
+    usage: /age
+    permission: storyengine.age
+  discord:
+    description: Configure Discord integration
+    usage: /discord <subcommand>
+    permission: storyengine.admin
+permissions:
+  storyengine.chronicle:
+    description: View the server chronicle
+    default: true
+  storyengine.admin:
+    description: Admin access to chronicle management
+    default: op
+  storyengine.landmark:
+    description: Manage landmarks
+    default: op
+  storyengine.book:
+    description: Get historical books
+    default: true
+  storyengine.age:
+    description: View server age
+    default: true

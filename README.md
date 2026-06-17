@@ -1,84 +1,188 @@
 <div align="center">
 
-![Server Story Engine](.github/assets/banner.svg)
+# Server Story Engine
 
-[![Paper](https://img.shields.io/badge/Paper-26.1.2+-black?style=flat-square&labelColor=gold)](https://papermc.io)
-[![License](https://img.shields.io/badge/license-MIT-gray?style=flat-square)](LICENSE)
-[![Version](https://img.shields.io/github/v/release/Zke-plof/ServerStoryEngine?style=flat-square&labelColor=gray)](https://github.com/Zke-plof/ServerStoryEngine/releases)
+**Your server's memory. Written in stone.**
 
----
-
-*Every SMP has stories. This plugin makes sure they're never forgotten.*
+A Paper plugin that watches what happens and writes it into history.
 
 </div>
 
+---
+
+> *"That guy stole the dragon egg."*
+> *"Our kingdom fought a war for 3 weeks."*
+> *"Someone became rich from selling potatoes."*
+>
+> Minecraft forgets most of it. This plugin doesn't.
+
+---
+
 ## What it does
 
-Server Story Engine watches your Paper server and turns events into a living chronicle. PvP kills, dragon slayings, wars, economy milestones, builds -- all of it becomes narrative history that players can read, collect, and interact with.
+Server Story Engine listens to what players do and turns it into **narrative history**. Not logs. Not timestamps. Actual stories.
 
-No two servers will ever have the same history.
+```
+[Chronicle] The Age of Dragons ended when Zhayke struck down the beast
+            and claimed victory over the End.
+```
+
+Every server builds its own unique chronicle. Wars, heroes, empires, betrayals -- it all gets written down.
+
+---
 
 ## Features
 
-- **Chronicle** -- browse server history in chat or a chest GUI
-- **Ages** -- server shifts between Settlement, Expansion, Conflict, Prosperity based on activity
-- **Books** -- auto-generated written books players can hold and collect
-- **Landmarks** -- gold blocks at key locations with right-click lore
-- **NPC Memory** -- villagers remember and talk about past events
-- **Discord** -- live history feed with colored embeds
+<details>
+<summary><b>Chronicle</b> -- the living record</summary>
 
-## Installation
+Every kill, every build, every milestone gets a generated story entry. Browse it in chat or through a chest GUI.
 
 ```
-1. Drop ServerStoryEngine.jar into plugins/
-2. Restart server
-3. Edit plugins/ServerStoryEngine/config.yml (optional)
+/chronicle        -- read the history
+/chronicle gui    -- browse it visually
+/chronicle 3      -- jump to page 3
+```
+</details>
+
+<details>
+<summary><b>Ages</b> -- your server evolves</summary>
+
+The plugin watches your server and shifts between eras based on what's happening:
+
+| Age | When | What it means |
+|-----|------|---------------|
+| Settlement | Low population | The land is quiet |
+| Expansion | Lots of building | Structures rise everywhere |
+| Conflict | PvP spiking | War breaks out |
+| Prosperity | Economy booming | Riches everywhere |
+
+Players feel like they're living through history.
+</details>
+
+<details>
+<summary><b>Books</b> -- collectible server lore</summary>
+
+Auto-generated written books you can hold, trade, and hoard.
+
+```
+/book The Fall of New Haven     -- get a book with server history
 ```
 
-Requires Paper 26.1.2+ and Java 21+.
+Imagine finding a book that tells the story of a war that happened 3 months ago.
+</details>
 
-## Commands
+<details>
+<summary><b>Landmarks</b> -- history you can touch</summary>
 
-| Command | Permission | Description |
-|---------|-----------|-------------|
-| `/chronicle [page]` | `storyengine.chronicle` | Browse history |
-| `/chronicle gui` | `storyengine.chronicle` | History browser GUI |
-| `/age` | `storyengine.age` | View current age |
-| `/book [title]` | `storyengine.book` | Get a history book |
-| `/landmark` | `storyengine.landmark` | Find nearby landmarks |
-| `/chronicle-admin add <title> <text>` | `storyengine.admin` | Add custom entry |
-| `/chronicle-admin delete <id>` | `storyengine.admin` | Remove entry |
-| `/chronicle-admin stats` | `storyengine.admin` | History stats |
-| `/chronicle-admin age <type>` | `storyengine.admin` | Force age change |
-| `/chronicle-admin book <title>` | `storyengine.admin` | Generate book |
-| `/chronicle-admin reload` | `storyengine.admin` | Reload config |
-| `/discord ...` | `storyengine.admin` | Discord setup |
+The plugin drops monuments at key spots -- dragon kill sites, battlefields, great builds. Gold blocks appear at the location.
 
-## Discord
+Walk up, right-click. Read what happened there.
+
+> *Here 24 warriors fought during the Crimson War.*
+</details>
+
+<details>
+<summary><b>NPC Memory</b> -- villagers that remember</summary>
+
+Right-click a villager and they might tell you about the dragon war, the great battle, or the rise of a merchant empire.
+
+> *"Have you heard? Zhayke defeated the dragon years ago."*
+</details>
+
+<details>
+<summary><b>Discord</b> -- history goes online</summary>
+
+Every event posts to your Discord channel with rich embeds. Your community sees what happens even when they're offline.
+
+Red for kills. Gold for money. Magenta for dragons. It looks good.
+</details>
+
+---
+
+## Setup
+
+**Requirements:** Paper 26.1.2+, Java 21+
 
 ```
-/discord token YOUR_BOT_TOKEN
-/discord channel YOUR_CHANNEL_ID
+1. drop the jar in plugins/
+2. restart the server
+3. done
+```
+
+Config lives at `plugins/ServerStoryEngine/config.yml`.
+
+---
+
+## Discord Setup
+
+```bash
+/discord token <your-bot-token>
+/discord channel <channel-id>
 /discord enable
 ```
 
-Bot needs **Message Content Intent** + **Send Messages** + **Embed Links** permissions. Create at [discord.com/developers](https://discord.com/developers/applications).
+Or set it in config:
 
-## Example
-
+```yaml
+discord:
+  enabled: true
+  token: "your-token-here"
+  channel-id: "123456789012345678"
 ```
-[Chronicle] The Age of Dragons ended when Valdris struck down the beast
-            and claimed victory over the End.
 
-[Chronicle] Blood was spilled when DarkKnight claimed victory over
-            ShadowMage in a fierce duel.
+**Full bot setup:**
+1. [Create a bot](https://discord.com/developers/applications) and copy the token
+2. Enable **Message Content Intent** under Privileged Gateway Intents
+3. Invite with `Send Messages` + `Embed Links` permissions
+4. Right-click your channel (Developer Mode on) -> Copy Channel ID
+5. Paste both into the config or use the commands above
 
-[Chronicle] The Crimson War has begun! The Iron Legion and The Shadow
-            Clan clash in a devastating conflict.
+---
 
-[Chronicle] A merchant empire rises. PotatoLord amassed a fortune
-            of 1,000,000 coins.
-```
+## Commands
+
+<details>
+<summary>Player commands</summary>
+
+| Command | What it does |
+|---------|-------------|
+| `/chronicle [page]` | Read server history |
+| `/chronicle gui` | Open the history browser |
+| `/age` | See the current server age |
+| `/book [title]` | Get a history book |
+| `/landmark` | Find nearby monuments |
+</details>
+
+<details>
+<summary>Admin commands</summary>
+
+| Command | What it does |
+|---------|-------------|
+| `/chronicle-admin add <title> <text>` | Write your own entry |
+| `/chronicle-admin delete <id>` | Remove an entry |
+| `/chronicle-admin stats` | Server history stats |
+| `/chronicle-admin age <type>` | Force an age change |
+| `/chronicle-admin book <title>` | Create a book |
+| `/chronicle-admin reload` | Reload config |
+| `/discord <setup commands>` | Configure Discord |
+</details>
+
+---
+
+## Examples
+
+> *The Age of Dragons ended when Zhayke struck down the beast and claimed victory over the End.*
+
+> *Blood was spilled when DarkKnight claimed victory over ShadowMage in a fierce duel.*
+
+> *The Crimson War has begun! The Iron Legion and The Shadow Clan clash in a devastating conflict.*
+
+> *A merchant empire rises. PotatoLord amassed a fortune of 1,000,000 coins.*
+
+> *The Age of Expansion has ended. A new era begins: the Age of Conflict.*
+
+---
 
 ## Build
 
@@ -90,6 +194,10 @@ mvn clean package
 
 Output: `target/ServerStoryEngine-1.0.0.jar`
 
-## License
+---
 
-MIT
+<div align="center">
+
+**[Download Latest Release](https://github.com/Zke-plof/ServerStoryEngine/releases)**
+
+</div>

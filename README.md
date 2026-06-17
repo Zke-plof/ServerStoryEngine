@@ -1,10 +1,20 @@
 <div align="center">
 
-# Server Story Engine
+```
+███████╗███████╗███████╗    ███████╗████████╗ ██████╗ ██████╗ ██╗   ██╗
+██╔════╝██╔════╝██╔════╝    ██╔════╝╚══██╔══╝██╔══██╗██╔══██╗╚██╗ ██╔╝
+███████╗█████╗  ███████╗    ███████╗   ██║   ███████║██████╔╝ ╚████╔╝
+╚════██║██╔══╝  ╚════██║    ╚════██║   ██║   ██╔══██║██╔══██╗  ╚██╔╝
+███████║███████╗███████║    ███████║   ██║   ██║  ██║██║  ██║   ██║
+╚══════╝╚══════╝╚══════╝    ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝
+
+```
 
 **Your server's memory. Written in stone.**
 
-A Paper plugin that watches what happens and writes it into history.
+![Paper](https://img.shields.io/badge/Paper-26.1.2+-black?style=flat-square&labelColor=gold)
+![License](https://img.shields.io/badge/license-MIT-black?style=flat-square&labelColor=gray)
+![Version](https://img.shields.io/github/v/release/Zke-plof/ServerStoryEngine?style=flat-square&labelColor=crimson)
 
 </div>
 
@@ -18,25 +28,41 @@ A Paper plugin that watches what happens and writes it into history.
 
 ---
 
-## What it does
+## The idea
 
-Server Story Engine listens to what players do and turns it into **narrative history**. Not logs. Not timestamps. Actual stories.
+Most plugins give you commands, GUIs, features.
+
+This one gives you **stories**.
+
+Every SMP has a history -- wars, heroes, betrayals, empires rising and falling. But the game doesn't remember any of it. Server Story Engine listens to what players do and writes it all down as narrative.
+
+Not logs. Not timestamps. **History.**
 
 ```
-[Chronicle] The Age of Dragons ended when Zhayke struck down the beast
+[Chronicle] The Age of Dragons ended when Valdris struck down the beast
             and claimed victory over the End.
 ```
 
-Every server builds its own unique chronicle. Wars, heroes, empires, betrayals -- it all gets written down.
+No two servers will ever have the same story.
 
 ---
 
-## Features
+## What's inside
+
+```
+📦 Plugin
+ ├── 📖 Chronicle        -- Every event becomes a story entry
+ ├── 🌍 Ages             -- Server shifts between eras based on activity
+ ├── 📚 Books            -- Auto-generated written history books
+ ├── 🏛️ Landmarks        -- Monuments placed at key locations
+ ├── 🗣️ NPC Memory       -- Villagers remember and talk about events
+ └── 💬 Discord          -- Live history feed to your Discord channel
+```
 
 <details>
-<summary><b>Chronicle</b> -- the living record</summary>
+<summary><b>📖 Chronicle</b> -- the living record</summary>
 
-Every kill, every build, every milestone gets a generated story entry. Browse it in chat or through a chest GUI.
+Every kill, every build, every milestone gets turned into a narrative entry. Browse it in chat or through a chest GUI.
 
 ```
 /chronicle        -- read the history
@@ -46,63 +72,63 @@ Every kill, every build, every milestone gets a generated story entry. Browse it
 </details>
 
 <details>
-<summary><b>Ages</b> -- your server evolves</summary>
+<summary><b>🌍 Ages</b> -- your server evolves</summary>
 
 The plugin watches your server and shifts between eras based on what's happening:
 
-| Age | When | What it means |
-|-----|------|---------------|
-| Settlement | Low population | The land is quiet |
-| Expansion | Lots of building | Structures rise everywhere |
-| Conflict | PvP spiking | War breaks out |
-| Prosperity | Economy booming | Riches everywhere |
+| Age | Trigger | Feel |
+|-----|---------|------|
+| **Settlement** | Low population | The land is quiet |
+| **Expansion** | Lots of building | Structures rise everywhere |
+| **Conflict** | PvP spiking | War breaks out |
+| **Prosperity** | Economy booming | Riches everywhere |
 
 Players feel like they're living through history.
 </details>
 
 <details>
-<summary><b>Books</b> -- collectible server lore</summary>
+<summary><b>📚 Books</b> -- collectible lore</summary>
 
-Auto-generated written books you can hold, trade, and hoard.
+Auto-generated written books you can hold, trade, and stash in libraries.
 
 ```
-/book The Fall of New Haven     -- get a book with server history
+/book The Fall of New Haven
 ```
 
-Imagine finding a book that tells the story of a war that happened 3 months ago.
+A player could find a book describing a war that happened months before they joined.
 </details>
 
 <details>
-<summary><b>Landmarks</b> -- history you can touch</summary>
+<summary><b>🏛️ Landmarks</b> -- history you can touch</summary>
 
-The plugin drops monuments at key spots -- dragon kill sites, battlefields, great builds. Gold blocks appear at the location.
-
-Walk up, right-click. Read what happened there.
+Gold blocks appear at dragon kill sites, battlefields, great builds. Walk up and right-click to read what happened there.
 
 > *Here 24 warriors fought during the Crimson War.*
 </details>
 
 <details>
-<summary><b>NPC Memory</b> -- villagers that remember</summary>
+<summary><b>🗣️ NPC Memory</b> -- villagers that remember</summary>
 
-Right-click a villager and they might tell you about the dragon war, the great battle, or the rise of a merchant empire.
+Right-click a villager. They might tell you about old wars, fallen heroes, or legends.
 
-> *"Have you heard? Zhayke defeated the dragon years ago."*
+> *"Have you heard? Valdris defeated the dragon years ago."*
 </details>
 
 <details>
-<summary><b>Discord</b> -- history goes online</summary>
+<summary><b>💬 Discord</b> -- history goes online</summary>
 
-Every event posts to your Discord channel with rich embeds. Your community sees what happens even when they're offline.
+Every event posts to a Discord channel with colored embeds. Red for kills, gold for money, magenta for dragons.
 
-Red for kills. Gold for money. Magenta for dragons. It looks good.
+```
+/discord token <bot-token>
+/discord channel <channel-id>
+/discord enable
+```
 </details>
 
 ---
 
 ## Setup
-
-**Requirements:** Paper 26.1.2+, Java 21+
 
 ```
 1. drop the jar in plugins/
@@ -110,40 +136,13 @@ Red for kills. Gold for money. Magenta for dragons. It looks good.
 3. done
 ```
 
-Config lives at `plugins/ServerStoryEngine/config.yml`.
-
----
-
-## Discord Setup
-
-```bash
-/discord token <your-bot-token>
-/discord channel <channel-id>
-/discord enable
-```
-
-Or set it in config:
-
-```yaml
-discord:
-  enabled: true
-  token: "your-token-here"
-  channel-id: "123456789012345678"
-```
-
-**Full bot setup:**
-1. [Create a bot](https://discord.com/developers/applications) and copy the token
-2. Enable **Message Content Intent** under Privileged Gateway Intents
-3. Invite with `Send Messages` + `Embed Links` permissions
-4. Right-click your channel (Developer Mode on) -> Copy Channel ID
-5. Paste both into the config or use the commands above
+**Requires:** Paper 26.1.2+, Java 21+
 
 ---
 
 ## Commands
 
-<details>
-<summary>Player commands</summary>
+### Players
 
 | Command | What it does |
 |---------|-------------|
@@ -152,35 +151,71 @@ discord:
 | `/age` | See the current server age |
 | `/book [title]` | Get a history book |
 | `/landmark` | Find nearby monuments |
-</details>
 
-<details>
-<summary>Admin commands</summary>
+### Admins
 
 | Command | What it does |
 |---------|-------------|
-| `/chronicle-admin add <title> <text>` | Write your own entry |
+| `/chronicle-admin add <title> <text>` | Write a custom entry |
 | `/chronicle-admin delete <id>` | Remove an entry |
-| `/chronicle-admin stats` | Server history stats |
-| `/chronicle-admin age <type>` | Force an age change |
-| `/chronicle-admin book <title>` | Create a book |
+| `/chronicle-admin stats` | History statistics |
+| `/chronicle-admin age <type>` | Force an age |
+| `/chronicle-admin book <title>` | Generate a book |
 | `/chronicle-admin reload` | Reload config |
-| `/discord <setup commands>` | Configure Discord |
-</details>
+| `/discord ...` | Configure Discord |
 
 ---
 
-## Examples
+## What it looks like
 
-> *The Age of Dragons ended when Zhayke struck down the beast and claimed victory over the End.*
+```
+[Chronicle] The Age of Dragons ended when Valdris struck down the beast
+            and claimed victory over the End.
 
-> *Blood was spilled when DarkKnight claimed victory over ShadowMage in a fierce duel.*
+[Chronicle] Blood was spilled when DarkKnight claimed victory over
+            ShadowMage in a fierce duel.
 
-> *The Crimson War has begun! The Iron Legion and The Shadow Clan clash in a devastating conflict.*
+[Chronicle] The Crimson War has begun! The Iron Legion and The Shadow
+            Clan clash in a devastating conflict.
 
-> *A merchant empire rises. PotatoLord amassed a fortune of 1,000,000 coins.*
+[Chronicle] A merchant empire rises. PotatoLord amassed a fortune
+            of 1,000,000 coins.
 
-> *The Age of Expansion has ended. A new era begins: the Age of Conflict.*
+[Chronicle] The Age of Expansion has ended. A new era begins:
+            the Age of Conflict.
+```
+
+---
+
+## Config
+
+Default config at `plugins/ServerStoryEngine/config.yml`. Everything is toggleable.
+
+```yaml
+# Age thresholds
+ages:
+  thresholds:
+    settlement-population: 5
+    expansion-buildings: 50
+    conflict-pvp-rate: 10
+    prosperity-economy: 1000000
+
+# What to track
+tracking:
+  pvp-kills: true
+  player-deaths: true
+  block-placement: true
+  dragon-kills: true
+  player-joins: true
+  economy: true
+
+# Discord
+discord:
+  enabled: false
+  token: ""
+  channel-id: ""
+  format: embed
+```
 
 ---
 
@@ -198,6 +233,6 @@ Output: `target/ServerStoryEngine-1.0.0.jar`
 
 <div align="center">
 
-**[Download Latest Release](https://github.com/Zke-plof/ServerStoryEngine/releases)**
+[Download latest release](https://github.com/Zke-plof/ServerStoryEngine/releases) · [Report a bug](https://github.com/Zke-plof/ServerStoryEngine/issues)
 
 </div>

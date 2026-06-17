@@ -1,4 +1,5 @@
 <div align="center">
+![Uploading minecraft_title.png…]()
 
 # Server Story Engine
 

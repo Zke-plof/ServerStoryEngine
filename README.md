@@ -1,5 +1,6 @@
 <div align="center">
-![Uploading minecraft_title.png…]()
+<img width="2048" height="188" alt="minecraft_title" src="https://github.com/user-attachments/assets/4dc97936-4011-4d69-88b6-eb153a1e0289" />
+
 
 # Server Story Engine
 

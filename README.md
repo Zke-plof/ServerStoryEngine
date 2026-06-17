@@ -1,69 +1,110 @@
 # Server Story Engine
 
-A Paper plugin that watches your server and writes its history.
+Your SMP has a story. This plugin writes it down.
+
+Most plugins add commands. This one adds **history**. Every dragon kill, every war, every fortune earned gets turned into lore your players can actually read, collect, and remember.
 
 ---
 
-## What it does
+## The problem
 
-Tracks PvP, dragon kills, wars, economy milestones, builds, and turns them into narrative entries. Your server gets a living chronicle, automatic ages, books, landmarks, NPC memory, and Discord integration.
+> "Remember when that guy stole the dragon egg?"
+> "Wait, which guy? When did that happen?"
 
-No two servers have the same story.
+Minecraft forgets. Your server forgets. Players join and have no idea what happened before them.
+
+## The fix
+
+Server Story Engine watches your server and generates a living chronicle. Events become narrative. History becomes tangible.
+
+```
+[Chronicle] The Age of Dragons ended when Valdris struck down the beast
+            and claimed victory over the End.
+
+[Chronicle] The Crimson War has begun! The Iron Legion and The Shadow
+            Clan clash in a devastating conflict.
+
+[Chronicle] A merchant empire rises. PotatoLord amassed a fortune
+            of 1,000,000 coins.
+```
+
+No two servers will ever have the same chronicle.
+
+---
+
+## What you get
+
+**Chronicle** -- every event becomes a story. Browse in chat or a chest GUI.
+
+**Ages** -- your server shifts between eras based on what's happening. Low pop = Settlement. Lots of building = Expansion. PvP spiking = Conflict. Economy booming = Prosperity.
+
+**Books** -- auto-generated written books players can hold, trade, and stash in libraries. History you can hold in your hand.
+
+**Landmarks** -- gold blocks drop at dragon kills, battle sites, great builds. Right-click to read what happened there.
+
+**NPC Memory** -- villagers remember. Right-click one and they might tell you about old wars or fallen heroes.
+
+**Discord** -- every event posts to your Discord with colored embeds. Red for kills, gold for money, magenta for dragons.
 
 ---
 
 ## Install
 
 ```
-1. drop jar in plugins/
-2. restart
-3. edit plugins/ServerStoryEngine/config.yml
+1. drop the jar in plugins/
+2. restart the server
+3. done
 ```
 
-Requires: **Paper 26.1.2+**, **Java 21+**
+Requires **Paper 26.1.2+** and **Java 21+**
 
 ---
 
 ## Commands
 
-| Command | Permission | Description |
-|---------|------------|-------------|
-| `/chronicle [page]` | storyengine.chronicle | Read history |
-| `/chronicle gui` | storyengine.chronicle | Chest GUI browser |
-| `/age` | storyengine.age | Current server age |
-| `/book [title]` | storyengine.book | Get history book |
-| `/landmark` | storyengine.landmark | Find nearby monuments |
-| `/chronicle-admin add <title> <text>` | storyengine.admin | Add custom entry |
-| `/chronicle-admin stats` | storyengine.admin | History stats |
-| `/chronicle-admin age <type>` | storyengine.admin | Force age change |
-| `/discord token <token>` | storyengine.admin | Set bot token |
-| `/discord channel <id>` | storyengine.admin | Set channel |
-| `/discord enable` | storyengine.admin | Enable Discord |
+### Players
+| Command | Description |
+|---------|-------------|
+| `/chronicle [page]` | Read server history |
+| `/chronicle gui` | Chest GUI browser |
+| `/age` | See the current server age |
+| `/book [title]` | Get a history book |
+| `/landmark` | Find nearby monuments |
+
+### Admins
+| Command | Description |
+|---------|-------------|
+| `/chronicle-admin add <title> <text>` | Write your own entry |
+| `/chronicle-admin delete <id>` | Remove an entry |
+| `/chronicle-admin stats` | Server history stats |
+| `/chronicle-admin age <type>` | Force an age change |
+| `/chronicle-admin book <title>` | Create a history book |
+| `/chronicle-admin reload` | Reload config |
 
 ---
 
-## Discord
+## Discord setup
 
 ```bash
-/discord token YOUR_BOT_TOKEN
-/discord channel YOUR_CHANNEL_ID
+/discord token <your-bot-token>
+/discord channel <channel-id>
 /discord enable
 ```
 
-Or in `config.yml`:
+Or set it in `config.yml`:
 
 ```yaml
 discord:
   enabled: true
-  token: "your-token"
+  token: "your-token-here"
   channel-id: "123456789012345678"
 ```
 
-Bot needs: **Message Content Intent** + **Send Messages** + **Embed Links** permissions.
+**Bot setup:** create at [discord.com/developers](https://discord.com/developers/applications) > enable **Message Content Intent** > invite with **Send Messages** + **Embed Links** > copy channel ID (right-click, Developer Mode on).
 
 ---
 
-## Example output
+## What players see
 
 ```
 [Chronicle] The Age of Dragons ended when Valdris struck down the beast
@@ -84,20 +125,34 @@ Bot needs: **Message Content Intent** + **Send Messages** + **Embed Links** perm
 
 ---
 
-## Ages
+## Config
 
-The plugin auto-detects your server state:
+Everything in `plugins/ServerStoryEngine/config.yml` is toggleable.
 
-| Age | Trigger |
-|-----|---------|
-| Settlement | Low population |
-| Expansion | Lots of building |
-| Conflict | High PvP |
-| Prosperity | Economy booming |
+```yaml
+ages:
+  thresholds:
+    settlement-population: 5
+    expansion-buildings: 50
+    conflict-pvp-rate: 10
+    prosperity-economy: 1000000
+
+tracking:
+  pvp-kills: true
+  player-deaths: true
+  block-placement: true
+  dragon-kills: true
+  player-joins: true
+
+discord:
+  enabled: false
+  token: ""
+  channel-id: ""
+```
 
 ---
 
-## Build
+## Build from source
 
 ```bash
 git clone https://github.com/Zke-plof/ServerStoryEngine.git
@@ -109,6 +164,4 @@ Output: `target/ServerStoryEngine-1.0.0.jar`
 
 ---
 
-## License
-
-MIT
+MIT License
